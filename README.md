@@ -1,4 +1,3 @@
-# Python Projects
+# Python Practice Playground
 
-This repository will contain simple and basic Python projects as part of my learning and practice journey. trying to improve my Python skills through hands-on exercises.
- 
+This repository will contain a collection of simple, diverse, random but purposeful Python exercises that reflect my journey of learning and enhancing my skills through hands-on exercises.
