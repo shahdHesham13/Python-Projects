@@ -1,0 +1,2 @@
+## To-Do List Application
+This project is a simple to-do list web application built with Python and Flask. It allows users to add, edit, and delete tasks, where each task is defined by attributes such as task name, due date, and priority. The app provides a user-friendly interface for managing tasks, making it easy to keep track of daily to-do lists.

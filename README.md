@@ -8,3 +8,6 @@ This repository will contain a collection of simple, diverse, random but purpose
 
 - [**Beautiful soup** Introduction and Fundamentals](./Beautifulsoup/README.md)  
   Contain the web scraping workflow, setting up tools, inspecting webpage structures, parsing HTML, using BeautifulSoup for data extraction, exploring techniques to traverse the HTML tree and extracting data using tags, attributes, and classes, and handle nested HTML structures.
+
+- [**Flask** To-Do List](./To-DoApp/README.md)
+ Simple To-Do List application used as a beginner practice to learn the Flask structure, enabling task management features such as adding, editing and deleting tasks.

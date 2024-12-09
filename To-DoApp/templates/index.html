@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List Application</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-inter min-h-screen flex items-center justify-center py-10">
+    <div class="bg-white shadow-lg rounded-lg w-full max-w-md p-6">
+        <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Todo List</h1>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="mb-4 p-3 rounded 
+                        {% if category == 'success' %}bg-green-100 text-green-800
+                        {% elif category == 'error' %}bg-red-100 text-red-800
+                        {% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('add') }}" method="post" class="mb-6 flex">
+            <input type="text" name="todo" 
+                   class="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                   placeholder="Enter a new todo">
+            <button type="submit" 
+                    class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 transition duration-300">
+                Add
+            </button>
+        </form>
+
+        <ul class="space-y-2">
+            {% for todo in todos %}
+                <li class="flex items-center bg-gray-50 p-3 rounded-lg shadow-sm hover:bg-gray-100 transition duration-200">
+                    <form action="{{ url_for('check', index=loop.index0) }}" method="get" class="mr-3">
+                        <input type="checkbox" 
+                               {{ 'checked' if todo['done'] else '' }}
+                               onchange="this.form.submit()" 
+                               class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500">
+                    </form>
+                    
+                    <span class="flex-grow {{ 'line-through text-gray-500' if todo['done'] else 'text-gray-800' }}">
+                        {{ todo['task'] }}
+                    </span>
+                    
+                    <div class="flex space-x-2">
+                        <a href="{{ url_for('edit', index=loop.index0) }}" 
+                           class="text-blue-500 hover:text-blue-700 transition">
+                            ✏️
+                        </a>
+                        <a href="{{ url_for('delete', index=loop.index0) }}" 
+                           class="text-red-500 hover:text-red-700 transition">
+                            🗑️
+                        </a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
